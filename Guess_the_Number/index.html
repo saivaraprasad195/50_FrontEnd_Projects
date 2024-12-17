@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <h4 id="lifes"></h4>
+      <span id="previous-guesses">Previous Guesses :- </span>
+      <h3>Number is : <span id ="number">- -</span></h3>
+      <div id="input-container">
+        <input id="Guess-number" type="number" placeholder="Enter Your Number"/>
+        <button onclick="Guess()" id="guess-btn">Guess</button>
+      </div>
+      <h2 id="result">Guess the Number</h2>
+      <button id="play-again" onclick="playAgain()">Play Again</button>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

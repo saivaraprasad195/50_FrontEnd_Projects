@@ -1,0 +1,237 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+:root{
+    --text-color: black;
+    --bg-primary: #e2e8f0;
+    --primary-color: #475569;
+    --secondary-color:#cbd5e1;
+    --task-color : #f6f6f6;
+    --cancel-color:#b1b9ca;
+    --confirm-color : #dc2626;
+    --task-size:48px;
+}
+
+body{
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+
+}
+
+h1{
+    margin: 1rem 0;
+    color: var(--text-color);
+    text-align: center;
+}
+
+button{
+    cursor:pointer;
+    border: none;
+    outline: none;
+}
+
+.container{
+    width: min(1200px, 90%);
+    margin: 0 auto;
+    
+}
+
+.columns{
+    display: flex;
+    gap: 1rem;
+}
+
+@media(max-width : 780px){
+    .columns{
+        flex-direction: column;
+    }
+}
+
+.column{
+    background-color: bisque;
+    flex:1;
+    display: grid;
+    grid-template-rows: var(--task-size) 1fr; 
+}
+
+.column-title{
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid rgb(168, 167, 167);
+    margin-bottom: 0.25rem;
+}
+
+.column-title h3{
+    margin-left: 0.25rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.column-title h3::after{
+    content: attr(data-tasks);
+    background-color: lightblue;
+    padding: 0.25rem 0.5rem; 
+    margin-left:0.5rem;  
+}
+
+.column-title button{
+    margin-left: auto;
+    margin-right: 1rem;
+    font-size: 1.75rem;
+}
+
+.tasks{
+    min-height: var(--task-size);
+    display: grid;
+    align-content: start;
+    gap: .5rem;
+}
+
+.tasks > *{
+    background-color: #fff;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.tasks:first-child{
+    margin-top: 0.5rem;
+}
+
+.task{
+    cursor: move;
+    transition: 0.3s;
+}
+
+.task.dragging{
+    background-color: var(--secondary-color);
+    box-shadow: none;
+    opacity: 0.5;
+}
+
+.task.dragging > *{
+    visibility: hidden;
+}
+
+.task menu{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.task button{
+    width: 1rem;
+    height: 1rem;
+    margin: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    background-color: transparent;
+}
+
+.task-input{
+    outline: none;
+    padding-left: 2.5rem;
+    overflow-wrap: anywhere;
+}
+
+.task-input::before{
+    content:"\F392";
+    font-family: "bootstrap-icons";
+    position: absolute;
+    top: 50%;
+    left: 0.875rem;
+    transform: translateY(-50%);
+    opacity: 0.5;
+}
+
+.task-input:empty::after{
+    content: attr(data-placeholder);
+    opacity: 0.5;
+}
+
+/* .confirm-modal[open]{
+    transform: translate(-50%, -50%) translateY(0);
+} */
+
+.confirm-modal{
+    transform: translate(-50%, -50%) translateY(50px);
+    left: 50%;
+    top: 50%;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.confirm-modal[open]::backdrop{
+    background: rgba(0,0,0,0.25);
+}
+
+.confirm-modal::backdrop{
+    background: rgba(0,0,0,0) ;
+    transition: all 0.3s ease-in-out;
+}
+
+@starting-style{
+    
+    .confirm-modal[open]{
+        opacity:0;
+        transform: translate(-50%, -50%) translateY(100px);
+    }
+    .confirm-modal[open]::backdrop{
+        background: rgba(0,0,0,0);
+    }
+}
+
+.confirm-modal form{
+    padding: 2rem;
+}
+
+.confirm-modal form > *:not(:last-child){
+    margin-bottom: 1rem ;
+}
+
+.confirm-modal h3{
+    font-size: 1.25rem;
+}
+
+.confirm-modal .preview{
+    font-size: 0.875rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--secondary-color);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    opacity: 0.8;
+}
+
+.confirm-modal button{
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+
+}
+
+.confirm-modal menu{
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.confirm-modal button#cancel{
+    border: 2px solid var(--cancel-color);
+}
+
+.confirm-modal button#confirm{
+    border: 2px solid var(--confirm-color);
+    background-color: var(--confirm-color);
+    color: white;
+
+}

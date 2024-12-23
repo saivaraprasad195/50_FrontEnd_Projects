@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <title>Kanban Board</title>
+  </head>
+  <body>
+    <h1>Kanban Board</h1>
+    <div class="container columns">
+      <div class="column">
+        <div class="column-title">
+          <h3 data-tasks="0">To Do</h3>
+          <button data-add><i class="bi bi-plus"> </i></button>
+        </div>
+        <div class="tasks"></div>
+      </div>
+      <div class="column">
+        <div class="column-title">
+          <h3 data-tasks="0">In Progress</h3>
+          <button data-add><i class="bi bi-plus"> </i></button>
+        </div>
+        <div class="tasks"></div>
+      </div>
+      <div class="column">
+        <div class="column-title">
+          <h3 data-tasks="0">For Review</h3>
+          <button data-add><i class="bi bi-plus"> </i></button>
+        </div>
+        <div class="tasks"></div>
+      </div>
+      <div class="column">
+        <div class="column-title">
+          <h3 data-tasks="0">Completed</h3>
+          <button data-add><i class="bi bi-plus"> </i></button>
+        </div>
+        <div class="tasks"></div>
+      </div>
+    </div>
+    </div>
+   
+    
+    <dialog class="confirm-modal">
+      <form method="dialog">
+        <h3>Delete Task?</h3>
+        <p>You are about to delete this task</p>
+        <div class="preview">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. In et beatae
+          culpa nam perferendis alias totam sit libero, officia asperiores ipsa
+          architecto veniam, optio at.
+        </div>
+        <menu>
+          <button type="button" id="cancel">Cancel</button>
+          <button type="submit" id="confirm">Yes,delete it</button>
+        </menu>
+      </form>
+    </dialog>
+  </body>
+  <script src="script.js"></script>
+</html>
